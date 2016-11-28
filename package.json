@@ -5,8 +5,8 @@
   "scripts": {
     "start": "npm run build && npm run _mkdir && npm run _copy && npm run electron",
     "test": "karma start",
-    "_mkdir": "mkdir dist/assets",
-    "_copy": "cp -R node_modules/primeng/resources public/css/style.css dist/assets",
+    "_mkdir": "mkdirp ./dist/assets",
+    "_copy": "cpx public/css/style.css dist/assets && cpx node_modules/primeng/resources/**/*.* dist/assets",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "electron": "electron ./desktop",
     "postinstall": "typings install"
@@ -37,6 +37,7 @@
   "devDependencies": {
     "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "^2.2.4",
+    "cpx": "^1.5.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
