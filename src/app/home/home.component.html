@@ -1,0 +1,86 @@
+
+<p-toolbar>
+    <div class="ui-toolbar-group-left">
+      <button pButton type="button" label="ค้นหา" icon="fa-search" (click)="showDialog()"></button>
+    </div>
+    <span class="ui-panel-title" style="font-size:18px;display:inline-block;margin-top:4px; margin-left: 10px;">
+        <i class="fa fa-id-card"></i>
+        HN: 0041223 ชื่อ-สกุล นายสถิตย์ เรียนพิศ
+        อายุ 36 ปี
+        </span>
+    <div class="ui-toolbar-group-right">
+        <button pButton type="button" icon="fa-cogs"></button>
+        <button pButton type="button" icon="fa-user"></button>
+        <!--<button pButton type="button" icon="fa-sign-out" label="Exit"></button>-->
+        &nbsp;&nbsp;&nbsp;
+        <button pButton type="button" icon="fa-window-minimize"></button>
+        <button pButton type="button" icon="fa-window-close"></button>
+    </div>
+</p-toolbar>
+
+<div class="ui-grid ui-grid-responsive">
+    <div class="ui-g-4">
+      <p-panel>
+        <header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">ประวัติรับบริการ</span>
+            <button style="float: right;" pButton type="button" icon="fa-refresh"></button>
+          </div>
+        </header>
+
+        <p-dataTable [value]="services" selectionMode="single" [(selection)]="selectedService" (onRowSelect)="onRowSelect($event)">
+            <p-column field="vstdate" [sortable]="true" header="วันที่" [style]="{'width':'100px'}"></p-column>
+            <p-column field="vsttime" [sortable]="true" header="เวลา" [style]="{'width':'80px'}"></p-column>
+            <p-column field="department" [sortable]="true" header="แผนก"></p-column>
+        </p-dataTable>
+        <p-paginator rows="10" totalRecords="100" (onPageChange)="paginate($event)"></p-paginator>
+      </p-panel>
+    </div>
+    <div class="ui-g-8">
+      <p-tabView>
+            <p-tabPanel header="คัดกรอง" [selected]="true" leftIcon="fa-calendar">
+                The story begins as Don Vito Corleone, the head of a New York Mafia family, overseeshis daughter's wedding. His beloved son ichael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+            </p-tabPanel>
+            <p-tabPanel header="การวินิจฉัย" leftIcon="fa-print">
+                <p-dataTable [value]="cars">
+                  <p-column field="vin" header="#"></p-column>
+                  <p-column field="year" header="รหัส"></p-column>
+                  <p-column field="year" header="ชื่อโรค"></p-column>
+                  <p-column field="year" header="Diag Type"></p-column>
+              </p-dataTable>
+            </p-tabPanel>
+            <p-tabPanel header="ยาและเวชภัณฑ์" leftIcon="fa-bell-o">
+                After a break of more than  15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+            </p-tabPanel>
+
+            <p-tabPanel header="เอกสาร" leftIcon="fa-folder-open">
+                The story begins as Don Vito Corleone, the head of a New York Mafia family, overseeshis daughter's wedding. His beloved son ichael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+            </p-tabPanel>
+
+        </p-tabView>
+      <!--<p-panel header="ประวัติรับบริการ">
+        
+
+      </p-panel>-->
+    </div>
+</div>
+
+<!--dialog search-->
+<p-dialog header="ค้นหาผู้ป่วย" [(visible)]="display" modal="modal" width="680" responsive="true">
+    <input id="in" type="text" placeholder="ระบุชื่อ หรือ HN..." size="30" pInputText />
+  <button type="button" (click)="toggleDisabled()" icon="fa-search" pButton label="ค้นหา"></button>
+    <p-dataTable [value]="patient" selectionMode="single" [(selection)]="selectedService" (onRowSelect)="onRowSelect($event)">
+      <p-column field="hn" header="HN" [sortable]="true" [style]="{'width':'100px'}"></p-column>
+      <p-column field="fullname" header="ชื่อ-สกุล" [sortable]="true"></p-column>
+      <p-column field="sex" header="เพศ" [sortable]="true" [style]="{'width':'100px'}"></p-column>
+      <p-column field="age" header="อายุ(ปี)" [sortable]="true" [style]="{'width':'100px'}"></p-column>
+  </p-dataTable>
+  <footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+          <button type="button" pButton icon="fa-close" (click)="display=false" label="No"></button>
+          <button type="button" pButton icon="fa-check" (click)="display=false" label="Yes"></button>
+      </div>
+  </footer>
+</p-dialog>
+
+<!--/dialog search-->
