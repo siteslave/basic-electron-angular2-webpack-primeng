@@ -1,10 +1,10 @@
-# Basic Angular2 + Electron + Webpack
+# Basic Angular2 + Electron + Webpack + PrimeNG
 
 ## Installation
 
-`$ git clone https://github.com/siteslave/angular2-electron-webpack`
+`$ git clone https://github.com/siteslave/basic-electron-angular2-webpack-primeng`
 
-`$ cd angular2-electron-webpack`
+`$ cd basic-electron-angular2-webpack-primeng`
 
 `$ npm install`
 
@@ -13,9 +13,3 @@
 ## Running
 
 `$ npm start`
-
-`$ electron desktop`
-
-## Screenshort
-
-![alt text](./screenshort/ss.png)
